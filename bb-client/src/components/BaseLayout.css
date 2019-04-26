@@ -1,0 +1,17 @@
+.navBar {
+    background-color: cadetblue;
+    color: white;
+    list-style: none;
+    display: flex;
+}
+
+.navBar li {
+    margin: 1em;
+}
+
+.footer {
+    text-align: center;
+    background-color: cadetblue;
+    color: white;
+  
+}
