@@ -47,7 +47,10 @@ export class AddBook extends Component {
                 imageURL: this.state.imageURL,
             })
         })
-            .then()
+            .then(() => {
+                this.props.history.push('./view-all-books')
+            })
+        // this.props.history.push('./view-all-books')
 
     }
     handleViewAll = () => {

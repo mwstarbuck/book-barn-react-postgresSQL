@@ -15,3 +15,12 @@
     color: white;
   
 }
+.link {
+    font-style: normal;
+    color: white;
+    text-decoration: none;
+    
+}
+.active-link {
+    font-weight: 600;
+}

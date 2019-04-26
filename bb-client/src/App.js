@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+// import './images'
 import './App.css';
 
 class App extends Component {
@@ -89,7 +89,7 @@ class App extends Component {
           <p>{book.genre}</p>
           <p>{book.publisher}</p>
           <p>{book.year}</p>
-          <p>{book.imageURL}</p>
+          <img src="{book.imageURL}"></img>
           <button>Delete</button>
         </div>
       </li>
@@ -99,15 +99,7 @@ class App extends Component {
       <div className="App">
         <h1>Big Books</h1>
         <h3>Your Go To Source of All big books</h3>
-        {/* <input type="text" onChange={this.handleTextBoxChange} name="title" placeholder="Enter Title"></input>
-        <input type="text" onChange={this.handleTextBoxChange} name="genre" placeholder="Enter Genre"></input>
-        <input type="text" onChange={this.handleTextBoxChange} name="publisher" placeholder="Enter Publisher"></input>
-        <input type="text" onChange={this.handleTextBoxChange} name="year" placeholder="Enter Year Published"></input>
-        <input type="text" onChange={this.handleTextBoxChange} name="imageURL" placeholder="Paste Image URL"></input>
-        <button onClick={this.handleSaveBookClick}>Add Book</button>
-        <button onClick={this.handleViewAllClick}>View All Books</button> */}
-        {/* <ul>{bookItems}</ul> */}
-
+        <img className="front-image" src="https://cdn.pixabay.com/photo/2015/06/02/12/59/narrative-794978_1280.jpg"></img>
       </div>
     )
 

@@ -6,22 +6,22 @@ const models = require('./models')
 server.use(cors())
 server.use(bodyParser.json())
 
-let books = [
-    // {
-    //     title: "book1",
-    //     genre: "fiction",
-    //     publisher: "Penguin",
-    //     year: 1972,
-    //     imageURL: "https://www.image.com"
-    // },
-    // {
-    //     title: "book2",
-    //     genre: "fiction",
-    //     publisher: "Penguin",
-    //     year: 1988,
-    //     imageURL: "https://www.image.com"
-    // }
-]
+// let books = [
+// {
+//     title: "book1",
+//     genre: "fiction",
+//     publisher: "Penguin",
+//     year: 1972,
+//     imageURL: "https://www.image.com"
+// },
+// {
+//     title: "book2",
+//     genre: "fiction",
+//     publisher: "Penguin",
+//     year: 1988,
+//     imageURL: "https://www.image.com"
+// }
+// ]
 
 server.post('/api/books', (req, res) => {
 
@@ -41,34 +41,40 @@ server.post('/api/books', (req, res) => {
         year: year,
         imageURL: imageURL
     })
-    //save the post to database
     book.save().then((savedBook) => {
-        console.log(savedBook)
     }).then(() => {
         res.json({ success: true, message: "book was added" })
     })
 
-    // books.push({
-    //     title: title,
-    //     genre: genre,
-    //     publisher: publisher,
-    //     year: year,
-    //     imageURL: imageURL
-    // })
-    // res.json({ success: true, message: "book was added" })
 })
 
 server.post('/api/delete', (req, res) => {
-    let book = req.body.name
-    let index = books.indexOf(book)
-    console.log(index)
-    books.splice(index, 1)
+    let bookID = req.body.id
+    // console.log(book)
+    models.Book.destroy({
+        where: {
+            id: bookID
+        }
+    })
+        .then(() => {
+            res.json({ success: true, message: "book was deleted" })
+        })
+
+    // let index = books.indexOf(book)
+    // console.log(index)
+    // books.splice(index, 1)
     // books.filter((book) => book != book)
-    res.json({ success: true, message: "book was added" })
 })
 
 server.get('/api/books', (req, res) => {
-    res.json(books)
+    res
+    models.Book.findAll().then((books) => {
+        // console.log(books)
+        // res.json(books)
+        res.json(books)
+
+    })
+    // res.json(books)
 })
 
 server.listen(8080, () => {
