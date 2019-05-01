@@ -99,7 +99,7 @@ class App extends Component {
       <div className="App">
         <h1>Big Books</h1>
         <h3>Your Go To Source of All big books</h3>
-        <img className="front-image" src="https://cdn.pixabay.com/photo/2015/06/02/12/59/narrative-794978_1280.jpg"></img>
+        {/* <img className="front-image" src="https://cdn.pixabay.com/photo/2015/06/02/12/59/narrative-794978_1280.jpg"></img> */}
       </div>
     )
 

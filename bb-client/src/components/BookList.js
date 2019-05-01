@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { booleanLiteralTypeAnnotation } from '@babel/types';
-
+import { Link } from 'react-router-dom'
 
 export class BookList extends Component {
     constructor() {
@@ -61,22 +61,42 @@ export class BookList extends Component {
         })
     }
 
+    handleUpdateBook = (book) => {
+        // // let id = book.id
+        // console.log(book)
+        // fetch("http://localhost:8080/api/update", {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json'
+        //     },
+        //     body: JSON.stringify({
+        //         id: book.id,
+        //     })
+
+        // }).then(() => {
+        //     this.props.history.push('./UpdateBook/:id')
+        // })
+    }
 
 
     render() {
         let books = this.state.books
         let bookItems = books.map((book) => {
-            return <li>
-                <div>
-                    <p>{book.title}</p>
-                    <p>{book.genre}</p>
-                    <p>{book.publisher}</p>
-                    <p>{book.year}</p>
-                    <img src={book.imageURL}></img>
-                    <input type="hidden" name="id" value={book.id}></input>
-                    <button onClick={() => this.handleDeleteClick(book)}>Delete</button>
-                </div>
-            </li >
+            return (
+                <li key={book.id}>
+                    <div>
+                        <p>{book.title}</p>
+                        <p>{book.genre}</p>
+                        <p>{book.publisher}</p>
+                        <p>{book.year}</p>
+                        <img src={book.imageURL}></img>
+                        <input type="hidden" name="id" value={book.id}></input>
+                        <button onClick={() => this.handleDeleteClick(book)}>Delete</button>
+                        <Link to={'UpdateBook/' + book.id}><button>Update Book</button>
+                        </Link >
+                    </div>
+                </li >
+            )
 
         })
         return (

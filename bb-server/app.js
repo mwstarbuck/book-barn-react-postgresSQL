@@ -67,7 +67,7 @@ server.post('/api/delete', (req, res) => {
 })
 
 server.get('/api/books', (req, res) => {
-    res
+
     models.Book.findAll().then((books) => {
         // console.log(books)
         // res.json(books)
@@ -75,6 +75,38 @@ server.get('/api/books', (req, res) => {
 
     })
     // res.json(books)
+})
+server.get('/api/update/id/:id', (req, res) => {
+    let bookID = req.params.id
+    console.log(bookID)
+    models.Book.findByPk(bookID).then((book) => {
+        console.log(book)
+        res.json(book)
+    })
+})
+
+server.post('/api/update', (req, res) => {
+    title = req.body.title
+    genre = req.body.genre
+    publisher = req.body.publisher
+    year = req.body.year
+    imageURL = req.body.imageURL
+    id = req.body.id
+
+    models.Book.update({
+        title: title,
+        genre: genre,
+        publisher: publisher,
+        year: year,
+        imageURL: imageURL
+    }, {
+            where: {
+                id: id
+            }
+        }).then(() => {
+            res.json({ success: true, message: "book was updated" })
+        })
+
 })
 
 server.listen(8080, () => {

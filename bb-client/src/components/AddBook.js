@@ -77,7 +77,6 @@ export class AddBook extends Component {
                 <input type="text" onChange={this.handleTextBoxChange} name="year" placeholder="Enter Year Published"></input>
                 <input type="text" onChange={this.handleTextBoxChange} name="imageURL" placeholder="Paste Image URL"></input>
                 <button onClick={this.handleSaveBookClick}>Add Book</button>
-                <button onClick={this.handleViewAllClick}>View All Books</button>
                 {/* <ul>{bookItems}</ul> */}
 
             </div>
